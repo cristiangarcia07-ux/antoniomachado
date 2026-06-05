@@ -4,14 +4,67 @@
   padding: 0;
 }
 
+:root {
+  --bg: #f0f4f0;
+  --text: #1a2e1a;
+  --card-bg: #ffffff;
+  --primary: #2d6a2d;
+  --primary-hover: #1f4f1f;
+  --primary-text: #ffffff;
+  --secondary-bg: #e8f0e8;
+  --secondary-hover: #d4e4d4;
+  --border: #c8dcc8;
+  --muted: #5a7a5a;
+  --muted-light: #7a9a7a;
+  --danger: #c0392b;
+  --danger-hover: #fde8e8;
+  --header-bg: #2d6a2d;
+  --header-text: #ffffff;
+  --accent: #4a8c4a;
+  --outline-border: #a0c0a0;
+  --shadow: 0 1px 6px rgba(0,0,0,0.06);
+  --hover-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  --divider: #e8f0e8;
+  --focus-shadow: 0 0 0 3px rgba(74,140,74,0.15);
+}
+
+[data-theme="dark"] {
+  --bg: #0d1a0d;
+  --text: #d4dcd4;
+  --card-bg: #1a2a1a;
+  --primary: #4a9a4a;
+  --primary-hover: #3d8a3d;
+  --primary-text: #ffffff;
+  --secondary-bg: #1a2a1a;
+  --secondary-hover: #2a3a2a;
+  --border: #2a4a2a;
+  --muted: #8a9a8a;
+  --muted-light: #6a7a6a;
+  --danger: #e74c3c;
+  --danger-hover: #3a2020;
+  --header-bg: #0a140a;
+  --header-text: #d4dcd4;
+  --accent: #4a9a4a;
+  --outline-border: #3a5a3a;
+  --shadow: 0 1px 6px rgba(0,0,0,0.3);
+  --hover-shadow: 0 2px 12px rgba(0,0,0,0.5);
+  --divider: #2a3a2a;
+  --focus-shadow: 0 0 0 3px rgba(74,154,74,0.25);
+}
+
+html {
+  transition: background-color 0.3s, color 0.3s;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  background: #f0f4f0;
-  color: #1a2e1a;
+  background: var(--bg);
+  color: var(--text);
   min-height: 100vh;
   line-height: 1.5;
   -webkit-tap-highlight-color: transparent;
+  transition: background 0.3s, color 0.3s;
 }
 
 input, button {
@@ -22,7 +75,7 @@ input, button {
 .hidden { display: none !important; }
 
 /* ═════════════════════════════════════════════════════════ */
-/*  PANTALLAS — mobile first                                */
+/*  PANTALLAS                                                */
 /* ═════════════════════════════════════════════════════════ */
 
 .screen {
@@ -34,12 +87,20 @@ input, button {
   padding: 1rem;
 }
 
+#app-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
+}
+
 /* ═════════════════════════════════════════════════════════ */
 /*  AUTENTICACIÓN                                           */
 /* ═════════════════════════════════════════════════════════ */
 
 .auth-card {
-  background: #fff;
+  background: var(--card-bg);
   border-radius: 16px;
   padding: 2rem 1.25rem;
   width: 100%;
@@ -50,11 +111,11 @@ input, button {
 .auth-card h1 {
   font-size: 1.5rem;
   margin-bottom: 0.25rem;
-  color: #2d6a2d;
+  color: var(--primary);
 }
 
 .auth-subtitle {
-  color: #5a7a5a;
+  color: var(--muted);
   margin-bottom: 1.5rem;
   font-size: 0.9rem;
 }
@@ -88,7 +149,7 @@ input, button {
 
 .auth-error {
   margin-top: 0.75rem;
-  color: #c0392b;
+  color: var(--danger);
   font-size: 0.85rem;
   min-height: 1.2em;
 }
@@ -98,8 +159,8 @@ input, button {
 /* ═════════════════════════════════════════════════════════ */
 
 .btn-primary {
-  background: #2d6a2d;
-  color: #fff;
+  background: var(--primary);
+  color: var(--primary-text);
   border: none;
   padding: 0.75rem 1.25rem;
   border-radius: 10px;
@@ -110,7 +171,7 @@ input, button {
 }
 
 .btn-primary:hover {
-  background: #1f4f1f;
+  background: var(--primary-hover);
 }
 
 .btn-primary:active {
@@ -118,9 +179,9 @@ input, button {
 }
 
 .btn-secondary {
-  background: #e8f0e8;
-  color: #2d6a2d;
-  border: 1px solid #c8dcc8;
+  background: var(--secondary-bg);
+  color: var(--primary);
+  border: 1px solid var(--border);
   padding: 0.75rem 1.25rem;
   border-radius: 10px;
   font-weight: 600;
@@ -130,13 +191,13 @@ input, button {
 }
 
 .btn-secondary:hover {
-  background: #d4e4d4;
+  background: var(--secondary-hover);
 }
 
 .btn-outline {
   background: transparent;
-  color: #e8f0e8;
-  border: 1px solid #a0c0a0;
+  color: var(--header-text);
+  border: 1px solid var(--outline-border);
   padding: 0.5rem 0.85rem;
   border-radius: 8px;
   font-size: 0.85rem;
@@ -147,7 +208,7 @@ input, button {
 
 .btn-outline:hover {
   background: rgba(255,255,255,0.1);
-  color: #fff;
+  color: var(--header-text);
 }
 
 .btn-icon {
@@ -166,12 +227,12 @@ input, button {
 }
 
 .btn-icon:hover {
-  background: #e8f0e8;
+  background: var(--secondary-bg);
 }
 
 .btn-icon.danger:hover {
-  background: #fde8e8;
-  color: #c0392b;
+  background: var(--danger-hover);
+  color: var(--danger);
 }
 
 /* ═════════════════════════════════════════════════════════ */
@@ -179,14 +240,18 @@ input, button {
 /* ═════════════════════════════════════════════════════════ */
 
 .app-header {
-  background: #2d6a2d;
-  color: #fff;
+  background: var(--header-bg);
+  color: var(--header-text);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   padding: 0.75rem 1rem;
   gap: 0.4rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  transition: background 0.3s, color 0.3s;
 }
 
 .app-header h1 {
@@ -209,19 +274,28 @@ input, button {
   white-space: nowrap;
 }
 
+.theme-toggle {
+  font-size: 1.1rem;
+  line-height: 1;
+  min-height: 36px;
+  min-width: 36px;
+  padding: 0.3rem 0.5rem;
+}
+
 /* ═════════════════════════════════════════════════════════ */
 /*  CUERPO                                                  */
 /* ═════════════════════════════════════════════════════════ */
 
 .app-main {
+  flex: 1;
   width: 100%;
   max-width: 640px;
   margin: 1.25rem auto;
-  padding: 0 0.75rem;
+  padding: 0 0.75rem 2rem;
 }
 
 /* ═════════════════════════════════════════════════════════ */
-/*  FORMULARIO — mobile: vertical stack                     */
+/*  FORMULARIO                                               */
 /* ═════════════════════════════════════════════════════════ */
 
 .item-form {
@@ -235,17 +309,19 @@ input, button {
 .item-form input[type="number"] {
   width: 100%;
   padding: 0.75rem 0.9rem;
-  border: 1px solid #c8dcc8;
+  border: 1px solid var(--border);
   border-radius: 10px;
   outline: none;
-  transition: border-color 0.2s;
+  background: var(--card-bg);
+  color: var(--text);
+  transition: border-color 0.2s, background 0.3s, color 0.3s;
   -webkit-appearance: none;
   appearance: none;
 }
 
 .item-form input:focus {
-  border-color: #4a8c4a;
-  box-shadow: 0 0 0 3px rgba(74,140,74,0.15);
+  border-color: var(--accent);
+  box-shadow: var(--focus-shadow);
 }
 
 .item-form .btn-primary,
@@ -266,19 +342,19 @@ input, button {
 }
 
 .shopping-item {
-  background: #fff;
+  background: var(--card-bg);
   border-radius: 12px;
   padding: 1rem 0.85rem;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   gap: 0.6rem;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
-  transition: box-shadow 0.2s, opacity 0.2s;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s, opacity 0.2s, background 0.3s;
 }
 
 .shopping-item:hover {
-  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  box-shadow: var(--hover-shadow);
 }
 
 .shopping-item.completed {
@@ -288,7 +364,7 @@ input, button {
 .item-check {
   width: 24px;
   height: 24px;
-  accent-color: #2d6a2d;
+  accent-color: var(--primary);
   cursor: pointer;
   flex-shrink: 0;
 }
@@ -306,12 +382,12 @@ input, button {
 
 .shopping-item.completed .item-name {
   text-decoration: line-through;
-  color: #7a9a7a;
+  color: var(--muted-light);
 }
 
 .item-qty {
   font-size: 0.8rem;
-  color: #5a7a5a;
+  color: var(--muted);
   margin-top: 0.1rem;
 }
 
@@ -322,7 +398,7 @@ input, button {
   width: 100%;
   justify-content: flex-end;
   padding-top: 0.5rem;
-  border-top: 1px solid #e8f0e8;
+  border-top: 1px solid var(--divider);
   margin-top: 0.25rem;
 }
 
@@ -332,7 +408,7 @@ input, button {
 
 .empty-msg {
   text-align: center;
-  color: #7a9a7a;
+  color: var(--muted-light);
   padding: 2rem;
   font-size: 0.95rem;
 }
@@ -354,20 +430,9 @@ input, button {
     padding: 1rem 1.5rem;
   }
 
-  .item-form {
-    flex-direction: column;
-  }
-  .item-form input[type="number"] {
-    width: 100%;
-  }
-  .item-form .btn-primary,
-  .item-form .btn-secondary {
-    width: 100%;
-  }
-
   .app-main {
     margin: 2rem auto;
-    padding: 0 1rem;
+    padding: 0 1rem 2rem;
   }
 }
 
